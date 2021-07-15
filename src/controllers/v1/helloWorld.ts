@@ -1,8 +1,7 @@
-import { Context } from 'koa'
+import { Request, Response } from 'express';
 
-const helloWorld = async (ctx: Context) => {
-  ctx.response.body = 'Hello!'
-  return (ctx.response.status = 200)
-}
+const helloWorld = async (req: Request, res: Response) => {
+  res.send('Hello World!');
+};
 
-export default helloWorld
+export default helloWorld;

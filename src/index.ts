@@ -1,19 +1,10 @@
 import serverless from 'serverless-http'
-import Koa from 'koa'
-import cors from '@koa/cors'
-import bodyParser from 'koa-bodyparser'
+import express from 'express'
 
-import v1routes from './controllers/v1/routes'
+import router from './controllers/v1/routes'
 
-const app = new Koa()
+const app = express()
 
-app.use(cors())
-app.use(bodyParser())
-
-app.use(v1routes.routes())
-
-if (process.env.IS_OFFLINE === 'true') {
-  app.use(v1routes.allowedMethods())
-}
+app.use(router)
 
 module.exports.handler = serverless(app)

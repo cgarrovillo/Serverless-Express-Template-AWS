@@ -1,9 +1,9 @@
 # REPLACE
 
 # app and org for use with dashboard.serverless.com
-service:
-app:
-org:
+service: test
+app: test
+org: cgarrovillo
 frameworkVersion: '2'
 
 provider:
@@ -41,6 +41,7 @@ plugins:
 custom:
   serverless-offline:
     httpPort: 3001
+    noPrependStageInUrl: true
 
 functions:
   app:
@@ -50,5 +51,5 @@ functions:
           path: /
           method: ANY
       - http:
-          path: /{proxy+}
+          path: '{proxy+}'
           method: ANY
